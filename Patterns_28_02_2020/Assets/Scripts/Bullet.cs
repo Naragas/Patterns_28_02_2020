@@ -1,9 +1,29 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public class Bullet : MonoBehaviour
+    public class Bullet : Projectile
     {
-        private float _damage;
+        private float _lifeTime = 3f;
+        public BulletPool BulletPool;
+
+        public void OnEnable()
+        {
+            StartCoroutine(Return());
+        }
+       
+        protected override void Move(float speed)
+        {
+            transform.Translate(speed * Time.deltaTime * Vector3.up);
+        }
+
+        private IEnumerator Return()
+        {
+            yield return new WaitForSeconds(_lifeTime);
+            BulletPool. returnBullet(this);
+            
+        }
     }
 }
