@@ -8,7 +8,7 @@ namespace DefaultNamespace
         [Range(1f, 6f)] public float Speed;
         [Range(1f, 6f)] public float Acceleration;
         [Range(0f, 100f)] public float Hp;
-        [Range(1f, 10f)] public float Force;
+        [Range(30f, 100f)] public float Force;
         
     }
 }

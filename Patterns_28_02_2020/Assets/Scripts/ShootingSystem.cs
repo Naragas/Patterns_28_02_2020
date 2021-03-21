@@ -7,6 +7,8 @@ namespace DefaultNamespace
         private readonly Bullet _bullet;
         private readonly Transform _barrel;
         private readonly float _force;
+        private BulletPool _bulletPool;
+        
 
         public ShootingSystem(Bullet bullet, Transform barrel, float force)
         {
@@ -17,8 +19,13 @@ namespace DefaultNamespace
 
         public void Shoot()
         {
-            var bullet = GameObject.Instantiate(_bullet, _barrel.position, _barrel.rotation);
-            bullet.GetComponent<Rigidbody2D>().AddForce(_barrel.up * _force);
+            if (_bulletPool == null)
+            {
+                _bulletPool = new BulletPool(Resources.Load<BulletData>("Data/BulletData"));
+            }
+            var bullet = _bulletPool.receiveBullet();
+            bullet.BulletPool = _bulletPool;
+            bullet.transform.position = _barrel.transform.position;
         }
     }
 }
