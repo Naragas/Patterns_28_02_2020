@@ -9,6 +9,7 @@ namespace DefaultNamespace
         private Spaceship _spaceship;
         private Bullet _bullet;
         private InputController _inputController;
+        private BulletPool _bulletPool;
 
         void Start()
         {
@@ -19,6 +20,8 @@ namespace DefaultNamespace
             var shooting = new ShootingSystem(_bullet, _spaceship._leftGun, _spaceship._fireForce);
             _playerShip = new PlayerShip(moveTransform, rotation, shooting);
             _inputController = new InputController(_playerShip);
+            _bulletPool = new BulletPool(Resources.Load<BulletData>("Data/BulletData"));
+            ServiceLocator.SetService(_bulletPool);
         }
 
         void Update()

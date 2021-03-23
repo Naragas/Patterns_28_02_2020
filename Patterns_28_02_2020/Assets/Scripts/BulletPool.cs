@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public class BulletPool
+    public sealed class BulletPool : IService
     {
         private readonly Stack<Bullet> _bullets = new Stack<Bullet>();
         private readonly GameObject _bulletPrefab;
