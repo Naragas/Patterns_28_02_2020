@@ -2,14 +2,16 @@
 
 namespace DefaultNamespace
 {
-    public class InputController : IExecute
+    internal class InputController : IExecute
     {
         
         private readonly PlayerShip _playerShip;
+        private readonly GameController _gameController;
 
-        public InputController(PlayerShip playerShip)
+        public InputController(PlayerShip playerShip, GameController gameController)
         {
             _playerShip = playerShip;
+            _gameController = gameController;
         }
         public void Execute()
         {
@@ -18,8 +20,20 @@ namespace DefaultNamespace
                 
                _playerShip.Shoot();
             }
-            
             _playerShip.Move(Input.GetAxis(NameManager.HORIZONTAL),Input.GetAxis(NameManager.VERTICAL));
+
+            if (Input.GetKeyDown(NameManager.X))
+            {
+                _gameController.changeScore(321312321312);
+            }
+            if (Input.GetKeyDown(NameManager.C))
+            {
+                _gameController.changeScore(3333);
+            }
+            if (Input.GetKeyDown(NameManager.V))
+            {
+                _gameController.changeScore(232);
+            }
         }
     }
 }
