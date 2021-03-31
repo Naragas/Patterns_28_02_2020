@@ -22,8 +22,8 @@ namespace DefaultNamespace
         private IEnumerator Return()
         {
             yield return new WaitForSeconds(_lifeTime);
-            Destroy(gameObject);
-            //BulletPool.returnBullet(this);
+            //Destroy(gameObject);
+            BulletPool.returnBullet(this);
             
         }
     }
