@@ -12,20 +12,34 @@ namespace DefaultNamespace
         private readonly IRotation _rotationSystem;
         private readonly ShootingSystem _shootingSystem;
         private List<IAbility> _abilities;
+        public PlayerState State;
+        public Vector2 _moveDirection;
 
         public float Speed => _moveSystem.Speed;
-
-        public PlayerShip(IMove moveSystem, IRotation rotationSystem, ShootingSystem shootingSystem, List<IAbility> abilities)
+        public void Move(Vector2 dir)
         {
+            _moveSystem.Move(dir);
+        }
+
+        public PlayerShip(IMove moveSystem, IRotation rotationSystem, ShootingSystem shootingSystem, List<IAbility> abilities, PlayerState _state)
+        {
+            State = _state;
             _moveSystem = moveSystem;
             _rotationSystem = rotationSystem;
             _shootingSystem = shootingSystem;
             _abilities = abilities;
         }
-        public void Move(float horizontal, float vertical)
+        /*public void Move(float horizontal, float vertical)
         {
             _moveSystem.Move(horizontal,vertical);
-        }
+        }*/
+
+
+
+        public void Request()
+        {
+            State.Move(this);
+        } 
 
         public void Rotation(Vector3 direction)
         {

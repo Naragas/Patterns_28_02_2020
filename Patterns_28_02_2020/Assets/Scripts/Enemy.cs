@@ -11,6 +11,7 @@ namespace DefaultNamespace
             var enemy = Instantiate(Resources.Load<Asteroid>("Enemy/Asteroid"));
             enemy.Health = hp;
             return enemy;
+            
         }
     }
 }

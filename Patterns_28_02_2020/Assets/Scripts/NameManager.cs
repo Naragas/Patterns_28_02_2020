@@ -11,5 +11,8 @@ namespace DefaultNamespace
         public const KeyCode X = KeyCode.X;
         public const KeyCode C = KeyCode.C;
         public const KeyCode V = KeyCode.V;
+        public const KeyCode A = KeyCode.A;
+        public const KeyCode D = KeyCode.D;
+        public const KeyCode S = KeyCode.S;
     }
 }

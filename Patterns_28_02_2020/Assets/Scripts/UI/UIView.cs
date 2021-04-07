@@ -11,6 +11,7 @@ namespace DefaultNamespace.UI
             [SerializeField] private MenuPannel _menuPannel;
             [SerializeField] private SettingsPanel _settingsPanel;
             [SerializeField] private GameObject _score;
+            private List<IDeath> _deaths;
 
             private Text _scoreText;
 
@@ -47,6 +48,14 @@ namespace DefaultNamespace.UI
                 }
                 
                 _currentPanel.Show();
+            }
+
+            public void Add(IDeath death)
+            {
+                death.OnDeathChange += () =>
+                {
+                    SetScore(death.ToString());
+                };
             }
 
             public void SetScore(string score)

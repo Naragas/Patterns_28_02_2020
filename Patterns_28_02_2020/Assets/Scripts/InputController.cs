@@ -20,8 +20,19 @@ namespace DefaultNamespace
                 
                _playerShip.Shoot();
             }
-            _playerShip.Move(Input.GetAxis(NameManager.HORIZONTAL),Input.GetAxis(NameManager.VERTICAL));
-
+            //_playerShip.Move(Input.GetAxis(NameManager.HORIZONTAL),Input.GetAxis(NameManager.VERTICAL));
+            if (Input.GetKeyDown(NameManager.A))
+            {
+                _playerShip.State = new MoveLeftState();
+            }    
+            if (Input.GetKeyDown(NameManager.D))
+            {
+                _playerShip.State = new MoveRightState();
+            }
+            if (Input.GetKeyDown(NameManager.S))
+            {
+                _playerShip.State = new IdleState();
+            }
             if (Input.GetKeyDown(NameManager.X))
             {
                 _gameController.changeScore(321312321312);
@@ -34,6 +45,7 @@ namespace DefaultNamespace
             {
                 _gameController.changeScore(232);
             }
+            _playerShip.Request();
         }
     }
 }

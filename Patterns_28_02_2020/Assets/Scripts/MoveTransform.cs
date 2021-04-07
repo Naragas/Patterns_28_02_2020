@@ -14,9 +14,13 @@ namespace DefaultNamespace
             Speed = speed;
         }
 
-        public void Move(float horizontal, float vertical)
+        /*public void Move(float horizontal, float vertical)
         {
             _rigidbody2D.velocity = new Vector2(horizontal * Speed, vertical * Speed);
+        }*/
+        public void Move(Vector2 directon)
+        {
+            _rigidbody2D.velocity = directon * Speed;
         }
     }
 }

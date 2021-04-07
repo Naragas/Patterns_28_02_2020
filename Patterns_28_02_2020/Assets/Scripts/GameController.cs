@@ -31,10 +31,11 @@ namespace DefaultNamespace
             var moveTransform = new AccelerationMove(_spaceship.GetRigidbody(), _spaceship._speed, _spaceship._acceleration);
             var rotation = new RotationShip(_spaceship.transform);
             var shooting = new ShootingSystem(_bullet, _spaceship._leftGun, _spaceship._fireForce);
-            _playerShip = new PlayerShip(moveTransform, rotation, shooting,_abilities);
+            _playerShip = new PlayerShip(moveTransform, rotation, shooting,_abilities, new IdleState());
             _inputController = new InputController(_playerShip, this);
             _bulletPool = new BulletPool(Resources.Load<BulletData>("Data/BulletData"));
             ServiceLocator.SetService(_bulletPool);
+            
         }
         
         void Update()

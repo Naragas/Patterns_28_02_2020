@@ -1,12 +1,15 @@
-﻿using UnityEngine;
+﻿using DefaultNamespace.UI;
+using UnityEngine;
 
 namespace DefaultNamespace
 {
     public class GameStarter : MonoBehaviour
     {
+        [SerializeField] private UIView _uiView;
         private void Start()
         {
-            Enemy.CreateAsteroidEnemy(new Health(100.0f, 100.0f));
+            ;
+            _uiView.Add(Enemy.CreateAsteroidEnemy(new Health(100.0f, 100.0f)));
             
             IEnemyFactory factory = new AsteroidFactory();
             factory.Create(new Health(100.0f, 100.0f));
